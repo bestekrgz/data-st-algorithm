@@ -32,11 +32,11 @@ class Stack():
     def get_stack(self):
         return self.items
 
-#
-my_stack = Stack()
-my_stack.push(1)
-my_stack.push(2)
-my_stack.push(3)
-my_stack.pop()
-print(my_stack.is_empty())
-print(my_stack.peek())
+# #
+# my_stack = Stack()
+# my_stack.push(1)
+# my_stack.push(2)
+# my_stack.push(3)
+# my_stack.pop()
+# print(my_stack.is_empty())
+# print(my_stack.peek())
