@@ -40,19 +40,30 @@ class LinkedList:
         new_node.next = prev_node.next
         prev_node.next = new_node
 
-    def delete_node(self,key):
+    def delete_node(self, key):
         current_node = self.head
-        if current_node and current_node.data ==key:
-            self.head=current_node.next
-            current_node=None
+        if current_node and current_node.data == key:
+            self.head = current_node.next
+            current_node = None
             return
 
+        prev = None
+        while current_node and current_node.data != key:  # if is not first node
+            prev = current_node
+            current_node = current_node.next
+        if current_node is None:
+            return
+
+        prev.next = current_node.next
+        current_node = None
 
 
 llist = LinkedList()
 llist.append('A')
+llist.append('B')
 llist.append('C')
 llist.append('D')
 # llist.insert_after_node(llist.head.next, 'F')
 # llist.delete_node('A')
+llist.delete_node('C')
 llist.print_list()
