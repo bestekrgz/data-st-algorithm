@@ -24,7 +24,7 @@ class LinkedList:
             last_node = last_node.next
         last_node.next = new_node
 
-    def prepend(self, data):
+    def prepend(self, data):  # insert an element at the beginning
         new_node = Node(data)
 
         new_node.next = self.head
@@ -40,10 +40,19 @@ class LinkedList:
         new_node.next = prev_node.next
         prev_node.next = new_node
 
+    def delete_node(self,key):
+        current_node = self.head
+        if current_node and current_node.data ==key:
+            self.head=current_node.next
+            current_node=None
+            return
+
+
 
 llist = LinkedList()
 llist.append('A')
 llist.append('C')
 llist.append('D')
-llist.insert_after_node(llist.head.next, 'F')
+# llist.insert_after_node(llist.head.next, 'F')
+# llist.delete_node('A')
 llist.print_list()
