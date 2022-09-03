@@ -128,7 +128,19 @@ class LinkedList:
             cur = nxt
         self.head = prev
 
+    def reverse_recursive(self):
 
+        def _reverse_recursive(cur, prev):
+            if not cur:
+                return prev
+
+            nxt = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nxt
+            return _reverse_recursive(cur, prev)
+
+        self.head = _reverse_recursive(cur=self.head, prev=None)
 llist = LinkedList()
 llist.append('A')
 llist.append('B')
