@@ -88,6 +88,36 @@ class LinkedList:
             return 0
         return 1 + self.len_recursive(node.next)
 
+    def swap_nodes(self, key_1, key_2):
+        if key_1 == key_2:
+            return
+        prev_1 = None
+        current_1 = self.head
+        while current_1 and current_1.data != key_1:
+            prev_1 = current_1
+            current_1 = current_1.next
+
+        prev_2 = None
+        current_2 = self.head
+        while current_2 and current_2.data != key_2:
+            prev_2 = current_2
+            current_2 = current_2.next
+
+        if not current_1 or not current_2:
+            return
+
+        if prev_1:
+            prev_1.next = current_2
+        else:
+            self.head = current_2
+
+        if prev_2:
+            prev_2.next = current_1
+        else:
+            self.head = current_1
+
+        current_1.next, current_2.next = current_2.next, current_1.next
+
 
 llist = LinkedList()
 llist.append('A')
@@ -100,6 +130,9 @@ llist.append('F')
 # llist.delete_node('A')
 # llist.delete_node('C')
 # llist.delete_node_at_pos(3)
-print(llist.len_iterative())
-print('Recursive',llist.len_recursive(llist.head))
+# print(llist.len_iterative())
+llist.swap_nodes("B", "C")
+# print("Swapping nodes B and C that are not head nodes")
+llist.print_list()
+# print('Recursive', llist.len_recursive(llist.head))
 # llist.print_list()
