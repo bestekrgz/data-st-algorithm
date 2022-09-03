@@ -141,6 +141,36 @@ class LinkedList:
             return _reverse_recursive(cur, prev)
 
         self.head = _reverse_recursive(cur=self.head, prev=None)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 llist = LinkedList()
 llist.append('A')
 llist.append('B')
@@ -155,7 +185,9 @@ llist.append('F')
 # print(llist.len_iterative())
 # llist.swap_nodes("B", "C")
 # print("Swapping nodes B and C that are not head nodes")
-llist.reverse_iterative()
+# llist.reverse_iterative()
+llist.reverse_recursive()
+
 llist.print_list()
 # print('Recursive', llist.len_recursive(llist.head))
 # llist.print_list()
