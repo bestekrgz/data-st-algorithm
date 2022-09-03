@@ -75,14 +75,31 @@ class LinkedList:
             prev.next = current_node.next
             current_node = None
 
+    def len_iterative(self):
+        count = 0
+        current_node = self.head
+        while current_node:
+            count += 1
+            current_node = current_node.next
+        return count
+
+    def len_recursive(self, node):
+        if node is None:
+            return 0
+        return 1 + self.len_recursive(node.next)
+
 
 llist = LinkedList()
 llist.append('A')
 llist.append('B')
 llist.append('C')
 llist.append('D')
+llist.append('E')
+llist.append('F')
 # llist.insert_after_node(llist.head.next, 'F')
 # llist.delete_node('A')
 # llist.delete_node('C')
-llist.delete_node_at_pos(3)
-llist.print_list()
+# llist.delete_node_at_pos(3)
+print(llist.len_iterative())
+print('Recursive',llist.len_recursive(llist.head))
+# llist.print_list()
