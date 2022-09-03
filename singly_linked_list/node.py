@@ -142,42 +142,56 @@ class LinkedList:
 
         self.head = _reverse_recursive(cur=self.head, prev=None)
 
+    def merge_sorted(self, llist):
+
+        p = self.head
+        q = llist.head
+        s = None
+
+        if not p:
+            return q
+        if not q:
+            return p
+
+        if p and q:
+            if p.data <= q.data:
+                s = p
+                p = s.next
+            else:
+                s = q
+                q = s.next
+            new_head = s
+        while p and q:
+            if p.data <= q.data:
+                s.next = p
+                s = p
+                p = s.next
+            else:
+                s.next = q
+                s = q
+                q = s.next
+        if not p:
+            s.next = q
+        if not q:
+            s.next = p
+
+        self.head = new_head
+        return self.head
 
 
+llist_1 = LinkedList()
+llist_2 = LinkedList()
+llist_1.append(1)
+llist_1.append(5)
+llist_1.append(7)
+llist_1.append(9)
+llist_1.append(10)
+llist_2.append(2)
+llist_2.append(3)
+llist_2.append(4)
+llist_2.append(6)
+llist_2.append(8)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-llist = LinkedList()
-llist.append('A')
-llist.append('B')
-llist.append('C')
-llist.append('D')
-llist.append('E')
-llist.append('F')
 # llist.insert_after_node(llist.head.next, 'F')
 # llist.delete_node('A')
 # llist.delete_node('C')
@@ -186,8 +200,9 @@ llist.append('F')
 # llist.swap_nodes("B", "C")
 # print("Swapping nodes B and C that are not head nodes")
 # llist.reverse_iterative()
-llist.reverse_recursive()
+# llist.reverse_recursive()
+llist_1.merge_sorted(llist_2)
 
-llist.print_list()
+llist_1.print_list()
 # print('Recursive', llist.len_recursive(llist.head))
 # llist.print_list()
