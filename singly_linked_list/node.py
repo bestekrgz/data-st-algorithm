@@ -178,9 +178,25 @@ class LinkedList:
         self.head = new_head
         return self.head
 
+    def remove_duplicates(self):
+        cur = self.head
+        prev = None
+        dup_values = dict()
+        while cur:
+            if cur.data in dup_values:
+                # Remove node
+                prev.next = cur.next
+                cur = None
+            else:
+                dup_values[cur.data] = 1
+                prev = cur
+            cur = prev.next
+
 
 llist_1 = LinkedList()
 llist_2 = LinkedList()
+llist_1.append(1)
+llist_1.append(5)
 llist_1.append(1)
 llist_1.append(5)
 llist_1.append(7)
@@ -202,7 +218,7 @@ llist_2.append(8)
 # llist.reverse_iterative()
 # llist.reverse_recursive()
 llist_1.merge_sorted(llist_2)
-
+llist_1.remove_duplicates()
 llist_1.print_list()
 # print('Recursive', llist.len_recursive(llist.head))
 # llist.print_list()
