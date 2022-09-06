@@ -192,33 +192,39 @@ class LinkedList:
                 prev = cur
             cur = prev.next
 
+    def count_occurences_iterative(self, data):
+        count = 0
+        cur = self.head
+        while cur:
+            if cur.data == data:
+                count += 1
+            cur = cur.next
 
-llist_1 = LinkedList()
+        return count
+
+    def count_occurences_recursive(self, node, data):
+        if not node:
+            return 0
+        if node.data == data:
+            return 1 + self.count_occurences_recursive(node.next, data)
+        else:
+            return self.count_occurences_recursive(node.next, data)
+
+llist = LinkedList()
+llist.append(1)
+llist.append(2)
+llist.append(3)
+llist.append(4)
+llist.append(5)
+llist.append(6)
+
 llist_2 = LinkedList()
-llist_1.append(1)
-llist_1.append(5)
-llist_1.append(1)
-llist_1.append(5)
-llist_1.append(7)
-llist_1.append(9)
-llist_1.append(10)
+llist_2.append(1)
 llist_2.append(2)
+llist_2.append(1)
 llist_2.append(3)
+llist_2.append(1)
 llist_2.append(4)
-llist_2.append(6)
-llist_2.append(8)
-
-# llist.insert_after_node(llist.head.next, 'F')
-# llist.delete_node('A')
-# llist.delete_node('C')
-# llist.delete_node_at_pos(3)
-# print(llist.len_iterative())
-# llist.swap_nodes("B", "C")
-# print("Swapping nodes B and C that are not head nodes")
-# llist.reverse_iterative()
-# llist.reverse_recursive()
-llist_1.merge_sorted(llist_2)
-llist_1.remove_duplicates()
-llist_1.print_list()
-# print('Recursive', llist.len_recursive(llist.head))
-# llist.print_list()
+llist_2.append(1)
+print(llist_2.count_occurences_iterative(1))
+print(llist_2.count_occurences_recursive(llist_2.head, 1))
